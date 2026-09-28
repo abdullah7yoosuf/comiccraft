@@ -1,0 +1,15 @@
+fastapi>=0.110
+uvicorn>=0.29
+jinja2>=3.1
+python-multipart>=0.0.9
+python-dotenv>=1.0
+google-genai>=1.0
+google-generativeai>=0.5  # legacy fallback, can remove after testing
+fpdf2>=2.7
+Pillow>=10.0
+pydantic>=2.0
+# --- Optional: real Stable Diffusion (heavy, GPU recommended) ---
+# torch --index-url https://download.pytorch.org/whl/cpu
+# diffusers>=0.27
+# transformers>=4.38
+# accelerate>=0.28

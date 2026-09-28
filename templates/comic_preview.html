@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Your Comic Preview - ComicCraft</title>
+<style>
+  body { margin: 0; background: #eef1f4; font-family: Arial, Helvetica, sans-serif; }
+  .wrap { max-width: 760px; margin: 24px auto; padding: 0 16px 40px; }
+  h1 { text-align: center; }
+  .panel { background: #fff; border-radius: 10px; padding: 18px; margin: 18px 0;
+    box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+  .panel img { width: 100%; max-height: 420px; object-fit: cover; border-radius: 8px; }
+  .scene { font-style: italic; color: #555; font-size: 13px; margin: 10px 0; }
+  .text { white-space: pre-wrap; font-size: 14px; }
+  .actions { display: flex; gap: 12px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 12px 22px; border-radius: 8px; text-decoration: none;
+    background: #1668dc; color: #fff; font-weight: bold; }
+  .btn:hover { background: #0f53b8; }
+  .btn.secondary { background: #22a06b; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>📖 Your Comic Preview</h1>
+  {% for panel in layout %}
+  <div class="panel">
+    <h3>Panel {{ panel.panel }}: {{ panel.title }}</h3>
+    <img src="{{ panel.image_path }}" alt="Panel {{ panel.panel }}" />
+    {% if panel.scene_description %}<div class="scene">{{ panel.scene_description }}</div>{% endif %}
+    <div class="text">{{ panel.text }}</div>
+  </div>
+  {% endfor %}
+  <div class="actions">
+    <a class="btn" href="{{ pdf_path }}" download>📥 Download Your Comic as PDF</a>
+    <a class="btn secondary" href="/export-success?pdf_path={{ pdf_path }}">Finish →</a>
+  </div>
+  <p style="text-align:center"><a href="/">← Create another comic</a></p>
+</div>
+</body>
+</html>
